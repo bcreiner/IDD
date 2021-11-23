@@ -4,7 +4,7 @@
 This is the repo for the course: Infectious Disease Dynamics: Applying models to data
 
 test:
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/bcreiner/IDD/main?labpath=lecture_1.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/bcreiner/IDD/main?filepath=lecture_1.ipynb)
 
 Some words
 ----------
