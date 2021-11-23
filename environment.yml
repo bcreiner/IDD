@@ -8,4 +8,5 @@ dependencies:
   - pandas
   - bokeh
   - rise
+  - hide_code
   - scipy
