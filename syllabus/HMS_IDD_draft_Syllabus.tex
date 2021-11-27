@@ -1,0 +1,248 @@
+\documentclass[fancyhdr,10pt]{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{anysize}
+\usepackage{watermark}
+\usepackage{fancyhdr}           % Headers and footers
+\pagestyle{fancy}
+\pdfpageheight=\paperheight
+\pdfpagewidth=\paperwidth
+%\usepackage[pdftex]{hyperref}
+%\hypersetup{colorlinks=true, citecolor=black, urlcolor=black, pdfpagemode=none}
+%\usepackage[colorhighlight,display,whitebackground]{texpower}
+\usepackage{color}
+\usepackage{subfigure}
+\usepackage{calc}
+\usepackage{array}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{graphicx}           % Standard graphics package
+\usepackage{mathrsfs}
+\usepackage{wrapfig}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\usepackage{palatino}%newcent palatino palatcm
+\newcommand{\gargantuan}{\fontsize{120}{60}\selectfont}
+\newcommand{\HUGE}{\fontsize{30}{15}\selectfont}
+  \fancyhf{}
+%  \renewcommand{\headrule}{}
+%  \renewcommand{\footrule}{}
+  \renewcommand{\footrulewidth}{0pt}
+  \renewcommand{\headrulewidth}{1.5pt}
+  % Headers and footers personalization using the `fancyhdr' package
+  \fancyhead[L]{BIOST 528 / EPI 553 / GH 536 / HMS 536}
+  \fancyhead[R]{Winter 2021}
+  % \fancyhead[C]{\textsc{Advanced Methods For Global Health II}}
+%  \fancyhead[L]{\usebox{\mylogo}}
+%\fancyhead[R]{\usebox{\includegraphics[scale=.675]{CSUNCSMlogo.jpg}}}
+%  \fancyfoot[L]{\includegraphics[width=1in]{UMLogo.gif}}
+  \fancyfoot[R]{}
+ \pagestyle{fancy}
+\usepackage{tikz}
+
+\setlength{\topmargin}{-1in}
+\setlength{\headheight}{.5in}
+\setlength{\textheight}{10in}
+\setlength{\evensidemargin}{-.5in}
+\setlength{\oddsidemargin}{-.5in}
+\setlength{\textwidth}{7.25in}
+\setlength{\headsep}{.25in}
+\setlength{\topskip}{.5in}
+\setlength{\footskip}{0in}
+\setlength{\headwidth}{7.5in}
+
+
+\newcommand{\LG}{.1in} %Letter Gap
+\newcommand{\IG}{.55in} %Infection Gap
+\newcommand{\IGG}{.45in} %Infection Gap
+\newcommand{\CHG}{.45in} %ClusterFuck Height Gap
+\newcommand{\CWG}{.65in} %ClusterFuck Width Gap
+\newcommand{\RG}{1.5in} %Row gap
+\newcommand{\BG}{1in} %Big gap
+\newcommand{\TG}{.6in} %Third infection middle gap
+\newcommand{\PSI}[2]{$\psi_{#2|#1}$}
+\newcommand{\Com}[4]{$#1_i\ #2_j\ #3_k\ #4_l$}
+\newcommand{\Mul}[1]{$\beta_{#1}$}
+
+
+\usetikzlibrary{arrows,positioning,fit,calc}
+\tikzstyle{line} = [draw, -latex']
+\tikzset{
+  label/.style = {font=\footnotesize, midway, fill=white, anchor=center}
+}
+\renewcommand{\arraystretch}{1.4}
+\setlength\parindent{0pt}
+\begin{document}
+\hbox{}\vspace{-.6in}
+\begin{center}
+\LARGE\textsc{Advanced Methods For Global Health II}
+\end{center}
+
+
+\section*{\underline{\textsc{Class Information}}}
+
+
+  \begin{tabular}{m{3.5in} m{4.5in}}
+Instructor: Dr. Bobby Reiner & Teaching Assistant: Adrien Allorant\\
+Class Meetings: Tuesday, Thursday, 1:30-2:50 & Lab Meetings: Thursday, 12:30-1:20\\
+Email: bcreiner@uw.edu & allorant@uw.edu\\
+Office Hours: Thursday 3-4\\
+\end{tabular}
+
+\renewcommand{\arraystretch}{1.2}
+\section*{\underline{\textsc{Course description and objectives}}}
+This course presents applications of the cluster randomized trial design to estimate the impact of interventions for a global health and implementation science audience. This course focuses on trial design and implementation, with a review of methods commonly used to analyze cluster randomized trial data.  The course assumes prior knowledge of generalized linear models.\\
+
+\noindent Learning objectives:\\
+\begin{enumerate}
+ \item Identify quantitative evaluation approaches necessary for answering evaluation questions key to implementation science
+ \item Discuss the uses, characteristics, methods, and standards of quantitative evaluation approaches for implementation science
+ \item Apply key evaluation approaches to answer evaluation questions in implementation science
+ \item List, describe, and compare strengths and limitations of key quantitative evaluation designs and analysis approaches
+ \item Assess the quality of global health implementation science evaluations designed and conducted by others
+\end{enumerate}
+
+
+\section*{\underline{\textsc{Resources}}}
+All required resources will be posted on Canvas: \url{https://canvas.uw.edu/courses/1452047}\\
+
+Recommended reading: Hayes \& Moulton (2017). Cluster Randomised Trials 2nd edition. CRC Press.
+
+\section*{\underline{\textsc{Course prerequisite}}}
+Either BGIOST 540, CS\&SS 560/SOC560/STAT 560, or permission of instructor. Recomended prep: EPI 512 and 513
+
+\section*{\underline{\textsc{Requirements and expectations}}}
+
+\textit{Participation}. Students are expected to attend course lectures, and actively participate in class discussions.\\
+
+\textit{Reading}. Students are expected to complete the required readings by the date listed in the course syllabus and come prepared to discuss and apply the material covered in the readings.\\
+
+\textit{Individual Assignments}. Students will complete 3 individual assignments in which they will apply the concepts and methods taught in that week. Each assignment will be distributed by the instructor the week before it is due, submitted before class on the due date using Canvas and worth 20$\%$ of the final grade. (20$\%$ x 3 = 60$\%$ of final grade total).\\
+
+\textit{Final Project}. Students will complete a final project using a dataset of their choosing (to be approved by instructor), or a stock dataset provided by the instructor. This project must use one of the key analytical methods addressed in this course. The final project will consist of a preliminary statistical analysis plan (SAP) and final written report.  SAP: 10$\%$, written report: 30$\%$ of final grade.\\
+
+\textbf{Key dates for final project}
+\begin{itemize}
+ \item A 1-page overview of the statistical analysis plan and dataset structure description will be due February 23rd. More detail will follow on the exact structure of this SAP.
+ \item Students who need to resubmit their SAP should meet with the TA as needed and resubmit by March 1st
+ \item Final project report due March 10th
+\end{itemize}
+
+The final project report will follow the format of a scientific article being submitted for an international peerreviewed journal. This should not exceed 3,000 words total (Body) and a structured abstract of 350 words. There is no maximum on the number of tables, figures, or appendices. The final report will be due March 10th. This should include the following format:
+
+\begin{itemize}
+ \item Cover page with
+ \begin{itemize}
+  \item Title
+  \item Authors \& Author affiliations
+  \item Word count in abstract and body
+  \item Number of Tables / Figures / Appendices
+  \item Abstract page with a structured abstract not to exceed 350 words and including the following sections:
+  \begin{itemize}
+   \item Background
+   \item Methods
+   \item Results
+   \item Conclusions
+  \end{itemize}
+ \end{itemize}
+ \item Body of manuscript including:
+ \begin{itemize}
+  \item Introduction
+  \item Methods
+  \item Results
+  \item Discussion
+  \item Conclusions
+ \end{itemize}
+ \item Statistical appendix: Please include an appendix of your code for running the models explained in the tables and figures appended at the end of the Body of your manuscript.
+\end{itemize}
+ NOTE: The format of this should be as would be submitted to an international peer reviewed journal. Tables and figures should be noted in text and then appended at the end of the document. Statistical code should be included as a statistical appendix and appended to the end of the document. References should be cited in a standard format and also appended to the end of the article in a references cited section. Total length of the body of the manuscript should not exceed 3,000 words.
+
+\section*{\underline{\textsc{Summary of course grading}}}
+Individual assingments (3): Each worth 20$\%$ of grade. Final project: worth 40$\%$ of grade.
+
+\section*{\underline{\textsc{Class scheulde}}}
+\textit{Lectures} Course lectures will be 1 hour and 20 minutes and occur on Tuesdays / Thursdays 1:30-2:50. All lectures will occur over Zoom. Some lectures may be pre-recorded and made available by at least the corresponding class session.\\
+
+\textit{TA-led Lab section}. There will be a required 1-hour TA-led lab session on Thursdays 12:30-1:20. In this session the TA will go over the answers to the homework submitted on Tuesday, answer any questions on the upcoming homework assignment, and re-visit any difficult topics from the last two course lectures. The TA will focus on R coding issues as well.
+
+\section*{\underline{\textsc{Statistical software:} \texttt{R}}}
+Lectures will demonstrate material exclusively in \verb!R!. Assignments are expected to be complted in \verb!R!. \verb!R! is freely available from \href{http://cran.r-project.org/}{http://cran.r-project.org/}.
+
+\section*{\underline{\textsc{Academic Integrity Statement}}}
+
+Students at the University of Washington (UW) are expected to maintain the highest standards of academic conduct, professional honesty, and personal integrity. The UW School of Public Health (SPH) is committed to upholding standards of academic integrity consistent with the academic and professional communities of which it is a part. Plagiarism, cheating, and other misconduct are serious violations of the University of Washington Student Conduct Code (WAC 478-120). We expect you to know and follow the university's policies on cheating and plagiarism, and the \href{https://sph.washington.edu/students/academic-integrity-policy}{SPH Academic Integrity Policy}. Any suspected cases of academic misconduct will be handled according to University of Washington regulations. For more information, see the University of Washington Community Standards and Student Conduct website.
+
+
+
+\section*{\underline{\textsc{Access and Accommodations}}}
+Your experience in this class is important to me. If you have already established accommodations with Disability Resources for Students (DRS), please communicate your approved accommodations to me at your earliest convenience so we can discuss your needs in this course.\\
+
+If you have not yet established services through DRS, but have a temporary health condition or permanent disability that requires accommodations (conditions include but not limited to; mental health, attention-related, learning, vision, hearing, physical or health impacts), you are welcome to contact DRS at 206-543-8924 or uwdrs@uw.edu or disability.uw.edu. DRS offers resources and coordinates reasonable accommodations for students with disabilities and/or temporary health conditions.  Reasonable accommodations are established through an interactive process between you, your instructor(s) and DRS.  It is the policy and practice of the University of Washington to create inclusive and accessible learning environments consistent with federal and state law.
+
+
+\section*{\underline{\textsc{Diversity statement}}}
+Diverse backgrounds, embodiments, and experiences are essential to the critical thinking endeavor at the heart of university education. Therefore, I expect you to follow the UW Student Conduct Code in your interactions with your colleagues and me in this course by respecting the many social and cultural differences among us, which may include, but are not limited to: age, cultural background, disability, ethnicity, family status, gender identity and presentation, citizenship and immigration status, national origin, race, religious and political beliefs, sex, sexual orientation, socioeconomic status, and veteran status. Please talk with me right away if you experience disrespect in this class, and I will work to address it in an educational manner. DCinfo@uw.edu is a resource for students with classroom climate concerns.\\
+
+Required Syllabus Language: ``Washington state law requires that UW develop a policy for accommodation of student absences or significant hardship due to reasons of faith or conscience, or for organized religious activities. The UW's policy, including more information about how to request an accommodation, is available at \href{https://registrar.washington.edu/staffandfaculty/religious-accommodations-policy/}{Religious Accommodations Policy}. Accommodations must be requested within the first two weeks of this course using the \href{https://registrar.washington.edu/students/religious-accommodations-request/}{Religious Accommodations Request form}.''
+
+
+
+
+\newpage
+\section*{\underline{\textsc{Tentative Course Outline}}}
+The subject matter covered and the corresponding dates listed below are subject to change. Design and Analysis sessions will frequently continue into the poseceding case study session.  Please read the posted reading before class.\\
+
+\begin{center}
+  \begin{tabular}{|c|c|m{3in}|l|}
+    \hline
+    % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+    Week                & Date  & Topic & Assignments \\\hline\hline
+    \multirow{2}{*}{1}  & 1/5  & Course Introduction $\&$ Review of Basic Statistical Concepts &   \\\cline{2-4}
+                        & 1/7  & Case study: COVID vaccine trials & \\\hline\hline
+    \multirow{2}{*}{2}  & 1/12  & Randomization and causality &  HW 1  \\\cline{2-4}
+                        & 1/14  & Case study: Ebola ring vaccine trial &\\\hline\hline
+    \multirow{2}{*}{3}  & 1/19  & Introduction to cluster randomized trials & HW 1 Due \\\cline{2-4}
+                        & 1/21  & Case study: Dengvaxia & \\\hline\hline
+    \multirow{2}{*}{4}  & 1/26   & Design I: Preliminary considerations & HW 2  \\\cline{2-4}
+                        & 1/28   & Case study: MORDOR &  \\\hline\hline
+    \multirow{2}{*}{5}  & 2/2  &  Analysis I: Preliminary considerations &  HW 2 Due   \\\cline{2-4}
+                        & 2/4  & Case study: Bednet trial &   \\\hline\hline
+    \multirow{2}{*}{6}  & 2/9  & Analysis II: Cluster-level analyses & HW 3  \\\cline{2-4}
+                        & 2/11  & Analysis III: Individual-level analyses &  \\\hline\hline
+    \multirow{2}{*}{7}  & 2/16  & Design II: Matched and stratified trials & HW 3 Due \\\cline{2-4}
+                        & 2/18  & Case study: The MEMA kwa Vijana Project &     \\\hline\hline
+    \multirow{2}{*}{8}  & 2/23   & Design III: Contamination &  Final report SAP due \\\cline{2-4}
+                        & 2/25   & Analysis IV: Power and sample size calculations &\\\hline\hline
+    \multirow{2}{*}{9}  & 3/1  & Design IV: Advanced designs &  Final report SAP resubmission (if necessary)\\\cline{2-4}
+                        & 3/3  & Case study: ZAMSTAR & \\\hline\hline
+    \multirow{2}{*}{10} & 3/8  & Case study: The Gambia hepatitis intervention study  & \\\cline{2-4}
+                        & 3/10  & Case study: Cluster randomized test-negative designs & Final report due \\\hline\hline
+  \end{tabular}
+\end{center}
+
+\section*{\underline{\textsc{Key dates}}}
+\begin{itemize}
+ \item January 12th - Homework 1 distributed
+ \item January 19th - Homework 1 due
+ \item January 26th - Homework 2 distributed
+ \item February 2nd - Homework 2 due
+ \item February 9th - Homework 3 distributed
+ \item February 16th - Homework 3 due
+ \item February 23rd - Final report SAP due
+ \item March 1st - Final report SAP resubmission (if necessary)
+ \item March 10th - Final report due
+\end{itemize}
+
+
+\end{document}
