@@ -1,7 +1,7 @@
 <!-- Just fill in the brackets -->
 # IDD
 
-This is the repo for the course: Infectious Disease Dynamics: models and data
+This is the repo for the course: Infectious Disease Dynamics: Models and data
 
 Lecture 1:
 
